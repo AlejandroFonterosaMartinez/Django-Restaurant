@@ -19,3 +19,5 @@ class NuevoPlatoForm(forms.ModelForm):
             # Guardar el objeto plato en la base de datos
             plato.save()
         return plato
+    
+

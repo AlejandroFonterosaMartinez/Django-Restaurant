@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Visualizar Platos{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+    <h1 class="text-3xl font-semibold mb-4 text-center">Visualizar Platos</h1>
+
+    <div class="overflow-x-auto">
+        <table class="table-auto border-collapse w-full">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2">Nombre</th>
+                    <th class="px-4 py-2">Categoría</th>
+                    <th class="px-4 py-2">Descripción</th>
+                    <th class="px-4 py-2">Precio</th>
+                    <th class="px-4 py-2">Habilitado</th>
+                    <th class="px-4 py-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                {% for plato in platos %}
+                <tr class="{% cycle 'bg-white' 'bg-gray-100' %}">
+                    <td class="px-4 py-2">{{ plato.nombre }}</td>
+                    <td class="px-4 py-2">{{ plato.categoria }}</td>
+                    <td class="px-4 py-2">{{ plato.descripcion }}</td>
+                    <td class="px-4 py-2">{{ plato.precio }}</td>
+                    <td class="px-4 py-2">{{ plato.habilitado }}</td>
+
+                    <td class="px-4 py-2">
+                        <form action=""
+                            method="post">
+                            {% csrf_token %}
+                            <button type="submit"
+                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Deshabilitar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock %}
