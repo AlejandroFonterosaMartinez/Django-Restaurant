@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}Carta de Restaurante{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-semibold mb-4 text-center">Carta de Restaurante</h1>
+
+<div id="imagenGrande"
+    class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center z-50">
+    <div class="max-w-md bg-white p-8 rounded-lg shadow-md flex flex-col">
+        <img id="imagenGrandeSrc" class=" mb-4" src
+            alt="Imagen Grande">
+        <div class="flex justify-between items-center">
+            <div>
+                <h3 id="nombrePlatoGrande"
+                    class="text-xl font-semibold mb-2"></h3>
+                <p id="descripcionPlatoGrande" class="text-gray-600 mb-2"></p>
+                <p id="precioPlatoGrande" class="text-purple-500 font-bold"></p>
+            </div>
+            <button id="cerrarImagenGrande"
+                class="text-gray-600 hover:text-black">&times;</button>
+        </div>
+    </div>
+</div>
+
+<div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Carnes</h2>
+    <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for plato in platos %}
+        {% if plato.categoria == 'Carne' %}
+        <div
+            class="p-6 border rounded-lg shadow-md bg-white plato cursor-pointer">
+            <img src="{{ plato.imagen }}" alt="{{ plato.nombre }}"
+                class="w-full h-64 object-cover mb-4 rounded-lg">
+            <h3
+                class="text-xl font-semibold text-gray-800">{{plato.nombre}}</h3>
+            <p class="text-gray-600">{{ plato.descripcion }}</p>
+            <button
+                class="bg-purple-500 hover:bg-purple-700 mt-8 text-white font-bold py-2 px-4 rounded">Precio:
+                {{ plato.precio }} €</button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<hr style="margin-top:15px;margin-bottom:15px;">
+<div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Pescados</h2>
+    <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for plato in platos %}
+        {% if plato.categoria == 'Pescado' %}
+        <div
+            class="p-6 border rounded-lg shadow-md bg-white plato cursor-pointer">
+            <img src="{{ plato.imagen }}" alt="{{ plato.nombre }}"
+                class="w-full h-64 object-cover mb-4 rounded-lg">
+            <h3
+                class="text-xl font-semibold text-gray-800">{{plato.nombre}}</h3>
+            <p class="text-gray-600">{{ plato.descripcion }}</p>
+            <button
+                class="bg-purple-500 hover:bg-purple-700 mt-8 text-white font-bold py-2 px-4 rounded">Precio:
+                {{ plato.precio }} €</button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<hr style="margin-top:15px;margin-bottom:15px;">
+<div>
+    <h2 class="text-2xl font-semibold mb-2">Veganos</h2>
+    <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for plato in platos %}
+        {% if plato.categoria == 'Vegano' %}
+        <div
+            class="p-6 border rounded-lg shadow-md bg-white plato cursor-pointer">
+            <img src="{{ plato.imagen }}" alt="{{ plato.nombre }}"
+                class="w-full h-64 object-cover mb-4 rounded-lg">
+            <h3
+                class="text-xl font-semibold text-gray-800">{{plato.nombre}}</h3>
+            <p class="text-gray-600">{{ plato.descripcion }}</p>
+            <button
+                class="bg-purple-500 hover:bg-purple-700 mt-8 text-white font-bold py-2 px-4 rounded">Precio:
+                {{ plato.precio }} €</button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<hr style="margin-top:15px;margin-bottom:15px;">
+<div class="categoria">
+    <h2 class="text-2xl font-semibold mb-2">Postres</h2>
+    <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% for plato in platos %}
+        {% if plato.categoria == 'Postre' %}
+        <div
+            class="p-6 border rounded-lg shadow-md bg-white plato cursor-pointer">
+            <img src="{{ plato.imagen }}" alt="{{ plato.nombre }}"
+                class="w-full h-64 object-cover mb-4 rounded-lg">
+            <h3
+                class="text-xl font-semibold text-gray-800">{{plato.nombre}}</h3>
+            <p class="text-gray-600">{{ plato.descripcion }}</p>
+            <button
+                class="bg-purple-500 hover:bg-purple-700 mt-8 text-white font-bold py-2 px-4 rounded">Precio:
+                {{ plato.precio }} €</button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

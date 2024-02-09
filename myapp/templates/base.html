@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}TEST{% endblock %}</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet">
+    </head>
+    <body>
+        <nav class="bg-gray-800 py-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="text-white font-semibold text-xl">Restaurante</div>
+                <div>
+                    <ul class="flex space-x-4">
+                        <li><a href="{% url 'carta_restaurante' %}"
+                                class="text-white hover:text-gray-300">Carta</a></li>
+                        <li><a href="{% url 'cargar_plato' %}" class="text-white hover:text-gray-300">Añadir Plato 
+                                </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container mx-auto py-4">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const platos = document.querySelectorAll(".plato");
+            const imagenGrande = document.getElementById("imagenGrande");
+            const imagenGrandeSrc = document.getElementById("imagenGrandeSrc");
+            const nombrePlatoGrande = document.getElementById("nombrePlatoGrande");
+            const descripcionPlatoGrande = document.getElementById("descripcionPlatoGrande");
+            const precioPlatoGrande = document.getElementById("precioPlatoGrande");
+            const cerrarImagenGrande = document.getElementById("cerrarImagenGrande");
+    
+            platos.forEach(function (plato) {
+                plato.addEventListener("click", function () {
+                    const imagenPequena = plato.querySelector("img");
+                    const nombrePlato = plato.querySelector("h3").textContent;
+                    const descripcionPlato = plato.querySelector("p:first-of-type").textContent;
+                    const precioPlato = plato.querySelector("button").textContent;
+                    const imagenSrc = imagenPequena.getAttribute("src");
+    
+                    nombrePlatoGrande.textContent = nombrePlato;
+                    descripcionPlatoGrande.textContent = descripcionPlato;
+                    precioPlatoGrande.textContent = precioPlato;
+                    imagenGrandeSrc.setAttribute("src", imagenSrc);
+                    imagenGrande.classList.remove("hidden");
+                });
+            });
+    
+            cerrarImagenGrande.addEventListener("click", function () {
+                imagenGrande.classList.add("hidden");
+            });
+        });
+    </script>
+
+</html>
+<style>
+    
+    .plato {
+        padding: 10px;
+        text-align: center;
+    }
+</style>
